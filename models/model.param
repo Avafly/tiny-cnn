@@ -1,0 +1,20 @@
+7767517
+18 18
+Input            conv2d_2_input           0 1 conv2d_2_input
+MemoryData       sequential_1/dense_2/BiasAdd/ReadVariableOp:0 0 1 sequential_1/dense_2/BiasAdd/ReadVariableOp:0 0=128
+MemoryData       sequential_1/dense_3/BiasAdd/ReadVariableOp:0 0 1 sequential_1/dense_3/BiasAdd/ReadVariableOp:0 0=10
+Reshape          sequential_1/conv2d_2/BiasAdd__6 1 1 conv2d_2_input sequential_1/conv2d_2/BiasAdd__6:0 0=16 1=16 2=1
+Convolution      sequential_1/conv2d_2/BiasAdd 1 1 sequential_1/conv2d_2/BiasAdd__6:0 sequential_1/conv2d_2/BiasAdd:0 0=6 1=5 11=5 2=1 12=1 3=1 13=1 5=1 6=150
+ReLU             sequential_1/leaky_re_lu_3/LeakyRelu 1 1 sequential_1/conv2d_2/BiasAdd:0 sequential_1/leaky_re_lu_3/LeakyRelu:0 0=1.000000e-01
+Pooling          sequential_1/max_pooling2d_2/MaxPool 1 1 sequential_1/leaky_re_lu_3/LeakyRelu:0 sequential_1/max_pooling2d_2/MaxPool:0 0=0 1=2 11=2 2=2 12=2 5=1
+Convolution      sequential_1/conv2d_3/BiasAdd 1 1 sequential_1/max_pooling2d_2/MaxPool:0 sequential_1/conv2d_3/BiasAdd:0 0=8 1=3 11=3 2=1 12=1 3=1 13=1 4=1 14=1 15=1 16=1 5=1 6=432
+ReLU             sequential_1/leaky_re_lu_4/LeakyRelu 1 1 sequential_1/conv2d_3/BiasAdd:0 sequential_1/leaky_re_lu_4/LeakyRelu:0 0=1.000000e-01
+Pooling          sequential_1/max_pooling2d_3/MaxPool 1 1 sequential_1/leaky_re_lu_4/LeakyRelu:0 sequential_1/max_pooling2d_3/MaxPool:0 0=0 1=2 11=2 2=2 12=2 5=1
+Permute          sequential_1/max_pooling2d_3/MaxPool__20 1 1 sequential_1/max_pooling2d_3/MaxPool:0 sequential_1/max_pooling2d_3/MaxPool__20:0 0=3
+Reshape          sequential_1/flatten_1/Reshape 1 1 sequential_1/max_pooling2d_3/MaxPool__20:0 sequential_1/flatten_1/Reshape:0 0=72
+InnerProduct     sequential_1/dense_2/MatMul 1 1 sequential_1/flatten_1/Reshape:0 sequential_1/dense_2/MatMul:0 0=128 1=0 2=9216
+BinaryOp         sequential_1/dense_2/BiasAdd 2 1 sequential_1/dense_2/MatMul:0 sequential_1/dense_2/BiasAdd/ReadVariableOp:0 sequential_1/dense_2/BiasAdd:0 0=0
+ReLU             sequential_1/leaky_re_lu_5/LeakyRelu 1 1 sequential_1/dense_2/BiasAdd:0 sequential_1/leaky_re_lu_5/LeakyRelu:0 0=1.000000e-01
+InnerProduct     sequential_1/dense_3/MatMul 1 1 sequential_1/leaky_re_lu_5/LeakyRelu:0 sequential_1/dense_3/MatMul:0 0=10 1=0 2=1280
+BinaryOp         sequential_1/dense_3/BiasAdd 2 1 sequential_1/dense_3/MatMul:0 sequential_1/dense_3/BiasAdd/ReadVariableOp:0 sequential_1/dense_3/BiasAdd:0 0=0
+Softmax          sequential_1/dense_3/Softmax 1 1 sequential_1/dense_3/BiasAdd:0 dense_3 0=0 1=1

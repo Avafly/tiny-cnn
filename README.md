@@ -8,7 +8,7 @@ The repo provides two versions: [cnn_struct.c](https://github.com/Avafly/tiny-cn
 
 ## Benchmarks
 
-Tested on a Raspberry Pi 4 model B (4GB RAM), utilizing 4 threads for all.
+Tested on a Raspberry Pi 4 model B (4GB RAM), utilizing 4 threads for all to recognize 1,000 images.
 
 ### Speed
 
@@ -31,6 +31,19 @@ Peak memory measured by `valgrind --tool=massif`.
 |    cnn_ncnn    |   285.4 KiB   |
 
 Compared to ORT and ncnn, tiny-cnn achieves **2-3x** speedup with **negligible** peak memory usage.
+
+## How to run
+
+```bash
+# cnn_const.c & cnn_struct.c
+./run ../ModelParam.txt ../ImageData.txt
+
+# cnn_ort
+./run ../models/model.onnx ../ImageData.txt
+
+# cnn_ncnn
+./run ../models/model ../ImageData.txt
+```
 
 ## References
 
