@@ -38,10 +38,10 @@ Compared to ORT and ncnn, tiny-cnn achieves **2-3x** speedup with **negligible**
 # cnn_const.c & cnn_struct.c
 ./run ../ModelParam.txt ../ImageData.txt
 
-# cnn_ort
+# cnn_ort.cpp
 ./run ../models/model.onnx ../ImageData.txt
 
-# cnn_ncnn
+# cnn_ncnn.cpp
 ./run ../models/model ../ImageData.txt
 ```
 
