@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 
     // init ncnn
     ncnn::Net net;
-    net.opt.num_threads = 1;
+    net.opt.num_threads = threads;
     if (net.load_param((std::string(argv[1]) + ".param").c_str()) ||
         net.load_model((std::string(argv[1]) + ".bin").c_str()))
     {

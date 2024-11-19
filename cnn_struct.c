@@ -207,7 +207,8 @@ int MaxPoolingLayer(
     return top_size;
 }
 
-inline void ReLU(float *data, const int size, const float alpha) {
+inline void ReLU(float *data, const int size, const float alpha)
+{
     for (int i = 0; i < size; ++i)
         data[i] = data[i] > 0.0f ? data[i] : data[i] * alpha;
 }
