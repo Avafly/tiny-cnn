@@ -275,7 +275,7 @@ int main(int argc, char *argv[])
         printf("Usage: %s model input [threads]\n", argv[0]);
         return 0;
     }
-    int threads = omp_get_num_procs();
+    int threads = omp_get_num_procs() > MAX_THREADS ? MAX_THREADS : omp_get_num_procs();
     if (argc >= 4 && atoi(argv[3]) > 0 && atoi(argv[3]) < MAX_THREADS)
         threads = atoi(argv[3]);
     printf("Model: %s\n", argv[1]);
