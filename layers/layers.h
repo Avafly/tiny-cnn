@@ -22,13 +22,6 @@ typedef struct {
     int out_feat;
 } Layer;
 
-static int Im2Col(
-    const float *data_im, float *data_col,
-    const int in_c, const int in_h, const int in_w,
-    const int out_c, const int out_h, const int out_w,
-    const int kernel_size, const int padding, const int stride
-);
-
 int ConvLayer(
     const float *bottom, float *top,
     const int in_c, const int in_h, const int in_w,
