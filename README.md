@@ -4,7 +4,7 @@ We sometimes need AI models for their outstanding performance on devices with ve
 
 This repo shows a tiny CNN implementation for recognizing 16x16 optical character images, which is simple, powerful enough, while extremely fast and lightweight. Although the example here is a CNN, the approach also works well for other architectures like autoencoders. As long as the model is small, the implementation is worthwhile.
 
-The repo provides two versions: [cnn_struct.c](https://github.com/Avafly/tiny-cnn/blob/8907b70a169a4aaf4d7a55967564620e2e4d4840/cnn_struct.c) builds the model dynamically from configuration, and [cnn_const.c](https://github.com/Avafly/tiny-cnn/blob/8907b70a169a4aaf4d7a55967564620e2e4d4840/cnn_const.c) uses a fixed model architecture for the fastest inference. Compared to ONNXRuntime and ncnn, tiny CNN shows clear advantages in both speed and peak memory.
+The repo provides two versions: [cnn_struct.c](https://github.com/Avafly/tiny-cnn/blob/main/cnn_struct.c) builds the model dynamically from configuration, while single-file [cnn_const.c](https://github.com/Avafly/tiny-cnn/blob/main/cnn_const.c) uses a fixed model architecture for the fastest inference. Compared to ONNXRuntime and ncnn, tiny CNN shows clear advantages in both speed and peak memory.
 
 ## Benchmarks
 
@@ -15,7 +15,7 @@ Tested on a Raspberry Pi 4 model B (4GB RAM), utilizing 4 threads for all to rec
 |     Model      | Elapsed times |
 | :------------: | :-----------: |
 | **cnn_const**  |  **8.91 ms**  |
-| **cnn_struct** | **14.09 ms**  |
+| **cnn_struct** | **13.85 ms**  |
 |    cnn_ort     |   32.29 ms    |
 |    cnn_ncnn    |   29.61 ms    |
 

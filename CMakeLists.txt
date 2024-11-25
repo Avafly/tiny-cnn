@@ -3,13 +3,13 @@ project(TINY-CNN)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
-# set(CMAKE_C_FLAGS "-O3 -DSHOW_RESULTS")
-set(CMAKE_C_FLAGS "-O3")
+set(CMAKE_C_FLAGS "-O3 -DSHOW_RESULTS")
+# set(CMAKE_C_FLAGS "-O3")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# set(CMAKE_CXX_FLAGS "-O3 -DSHOW_RESULTS")
-set(CMAKE_CXX_FLAGS "-O3")
+set(CMAKE_CXX_FLAGS "-O3 -DSHOW_RESULTS")
+# set(CMAKE_CXX_FLAGS "-O3")
 
 set(ENV_ROOT "/your/envs")
 
@@ -19,11 +19,14 @@ find_package(OpenMP REQUIRED)
 set(OPENBLAS_INCLUDE_DIR "${ENV_ROOT}/openblas/include")
 set(OPENBLAS_LIB_DIR "${ENV_ROOT}/openblas/lib")
 
+file(GLOB LAYER_SRCS ${CMAKE_SOURCE_DIR}/layers/*.c)
+
 # cnn_struct
 add_executable(cnn_struct cnn_struct.c)
-target_include_directories(cnn_struct PRIVATE ${OPENBLAS_INCLUDE_DIR})
+target_include_directories(cnn_struct PRIVATE ${OPENBLAS_INCLUDE_DIR} ${CMAKE_SOURCE_DIR}/layers)
 target_link_directories(cnn_struct PRIVATE ${OPENBLAS_LIB_DIR})
 target_link_libraries(cnn_struct -l:libopenblas.a OpenMP::OpenMP_C -lpthread -lm)
+target_sources(cnn_struct PRIVATE ${LAYER_SRCS})
 # cnn_const
 add_executable(cnn_const cnn_const.c)
 target_include_directories(cnn_const PRIVATE ${OPENBLAS_INCLUDE_DIR})
