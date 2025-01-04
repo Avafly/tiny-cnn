@@ -2,7 +2,7 @@
 
 We sometimes need AI models for their outstanding performance on devices with very limited resources, while keeping them extremely lightweight. Many inference frameworks, e.g., [ORT](https://github.com/microsoft/onnxruntime) and [ncnn](https://github.com/Tencent/ncnn), perform well for larger models but fall short with tiny models: for tiny models, the initialization overhead can even far exceed the inference time, and their optimizations for large models do not always benefit smaller ones. This is where custom implementations are better.
 
-This repo shows a tiny CNN implementation for recognizing 16x16 optical character images, which is simple, powerful enough, while extremely fast and lightweight. Although the example here is a CNN, the approach also works well for other architectures like autoencoders. As long as the model is small, the implementation is worthwhile.
+This repo shows a tiny CNN implementation for recognizing 16x16 optical character images, which is simple, powerful enough, while extremely fast and lightweight. Although the example here is a CNN, the approach also works well for other architectures like autoencoders. **As long as the model is small, the implementation is worthwhile.**
 
 The repo provides two versions: [cnn_struct.c](https://github.com/Avafly/tiny-cnn/blob/main/cnn_struct.c) builds the model dynamically from configuration, while single-file [cnn_const.c](https://github.com/Avafly/tiny-cnn/blob/main/cnn_const.c) uses a fixed model architecture for the fastest inference. Compared to ONNXRuntime and ncnn, tiny CNN shows clear advantages in both speed and peak memory.
 
