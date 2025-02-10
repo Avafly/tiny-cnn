@@ -87,7 +87,6 @@ int MaxPoolingLayer(
                     for (int n = 0; n < kernel_size; ++n)
                     {
                         int index = in_pos + m * in_w + n;
-                        // valid mode
                         if ((ow >= in_w / stride && n > 0) ||
                             (oh >= in_h / stride && m > 0))
                         {
